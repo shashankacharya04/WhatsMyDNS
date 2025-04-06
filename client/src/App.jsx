@@ -14,11 +14,14 @@ function App() {
 
   //make this a hook in future
   async function getWhoisData() {
-    const response = await fetch("http://localhost:3001/whois", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ submittedValue }),
-    }); // response will be like
+    const response = await fetch(
+      "https://whats-my-dns-server-n49jm5wii-shashankacharya04s-projects.vercel.app/whois",
+      {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ submittedValue }),
+      }
+    ); // response will be like
     //{domainName: 'youtube.com', registrar: 'MarkMonitor, Inc.', creationDate: '2005-02-15T05:13:12+0000', expiryDate: '2026-02-15T00:00:00+0000', nameServers: Array(4), …}
 
     const data = await response.json();
@@ -28,26 +31,38 @@ function App() {
   }
   async function getDnsDetails() {
     const dnsAPI = [
-      fetch("http://localhost:3001/dnsrecords/A", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ submittedValue }),
-      }),
-      fetch("http://localhost:3001/dnsrecords/MX", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ submittedValue }),
-      }),
-      fetch("http://localhost:3001/dnsrecords/TXT", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ submittedValue }),
-      }),
-      fetch("http://localhost:3001/dnsrecords/NS", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ submittedValue }),
-      }),
+      fetch(
+        "https://whats-my-dns-server-n49jm5wii-shashankacharya04s-projects.vercel.app/dnsrecords/A",
+        {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ submittedValue }),
+        }
+      ),
+      fetch(
+        "https://whats-my-dns-server-n49jm5wii-shashankacharya04s-projects.vercel.app/dnsrecords/MX",
+        {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ submittedValue }),
+        }
+      ),
+      fetch(
+        "https://whats-my-dns-server-n49jm5wii-shashankacharya04s-projects.vercel.app//dnsrecords/TXT",
+        {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ submittedValue }),
+        }
+      ),
+      fetch(
+        "https://whats-my-dns-server-n49jm5wii-shashankacharya04s-projects.vercel.app/dnsrecords/NS",
+        {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ submittedValue }),
+        }
+      ),
     ];
 
     const values = await Promise.all(dnsAPI);

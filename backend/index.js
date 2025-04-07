@@ -9,7 +9,11 @@ const getDnsDetails = require("./controllers/dns.controllers");
 const app = express();
 const cors = require("cors");
 
-app.use(cors());
+app.use(cors({
+  origin:"https://whats-my-dns-client.vercel.app/",
+  methods:["GET","POST"],
+  credentials:true
+}));
 app.use(express.json());
 
 

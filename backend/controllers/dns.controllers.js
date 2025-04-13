@@ -8,6 +8,7 @@ const resolvers = [
 
 async function nameServers(req,res){
   const {submittedValue:domain}  =req.body
+  console.log("domain in DNS controller is", domain)
 //const domain = "17-netsoltest.com"
 try {
     const results = await Promise.all(

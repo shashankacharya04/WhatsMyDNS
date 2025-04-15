@@ -13,6 +13,7 @@ function App() {
   });
 
   const baseUrl = import.meta.env.VITE_API_DEV_ENDPOINT;
+  console.log("basurl is", baseUrl);
 
   //make this a hook in future
   async function getWhoisData(filteredValue) {

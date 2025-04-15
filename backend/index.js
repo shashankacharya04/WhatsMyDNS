@@ -11,9 +11,20 @@ const cors = require("cors");
 
 app.use(cors({
   origin:["https://whats-my-dns-client.vercel.app/","http://localhost:5173"],
-  methods:["GET","POST"],
+  methods:["GET","POST", "OPTIONS"],
   credentials:true
 }));
+
+app.use((req, res, next) => {
+  console.log("Origin:", req.headers.origin);
+  res.header("Access-Control-Allow-Origin", req.headers.origin || "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  next();
+});
+
+
+// app.options("*", cors());
 app.use(express.json());
 
 

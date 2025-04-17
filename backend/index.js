@@ -9,11 +9,11 @@ const getDnsDetails = require("./controllers/dns.controllers");
 const app = express();
 const cors = require("cors");
 
-// app.use(cors({
-//   origin:["http://localhost:5173","https://whats-my-dns-client.vercel.app/"],
-//   methods:["GET","POST", "OPTIONS"],
-//   credentials:true
-// }));
+app.use(cors({
+  origin:["http://localhost:5173","https://whats-my-dns-client.vercel.app/"],
+  methods:["GET","POST", "OPTIONS"],
+  credentials:true
+}));
 
 
 // app.use((req, res, next) => {
